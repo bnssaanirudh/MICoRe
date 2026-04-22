@@ -32,29 +32,29 @@ MICoRe is deployed as a high-performance full-stack application, divorcing heavy
 
 ```mermaid
 graph TD
-    subgraph Frontend: Vite + React
-        UI[Premium Glassmorphism Dashboard]
-        Viz[Live Telemetry & DAG Visualizer]
+    subgraph Frontend ["Frontend: Vite + React"]
+        UI["Premium Glassmorphism Dashboard"]
+        Viz["Live Telemetry & DAG Visualizer"]
     end
 
-    subgraph Backend API: FastAPI
-        REST[Asynchronous REST Controller]
-        State[Training State Manager]
+    subgraph Backend ["Backend API: FastAPI"]
+        REST["Asynchronous REST Controller"]
+        State["Training State Manager"]
     end
 
-    subgraph Deep Learning Engine: PyTorch SCM
-        Encoder[iVAE Encoder q(z|x, u)]
-        NOTEARS[Continuous DAG h(W) = tr(exp(W*W))-d=0]
-        Loss[L_rec + KL(e) + L_MI]
+    subgraph Engine ["Deep Learning Engine: PyTorch SCM"]
+        Encoder["iVAE Encoder q(z|x, u)"]
+        NOTEARS["Continuous DAG h(W) = tr(exp(W*W))-d=0"]
+        Loss["L_rec + KL(e) + L_MI"]
     end
 
-    UI <-->|HTTP JSON| REST
-    REST -->|Triggers| State
-    State -->|Spawns Thread| Encoder
+    UI <-->|"HTTP JSON"| REST
+    REST -->|"Triggers"| State
+    State -->|"Spawns Thread"| Encoder
     Encoder --> NOTEARS
     NOTEARS --> Loss
-    Loss -.->|Yields Metrics| State
-    State -.->|Streams| Viz
+    Loss -.->|"Yields Metrics"| State
+    State -.->|"Streams"| Viz
 ```
 
 ## 📊 Disentanglement & Evaluation Metrics
