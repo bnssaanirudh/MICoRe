@@ -1,0 +1,568 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Fira+Code:wght@400;600&display=swap');
+
+:root {
+  /* Anime.js Brutalist Theme */
+  --bg-color: #000000;
+  --bg-secondary: #0a0a0a;
+  --border-color: #222222;
+  --border-light: #444444;
+  
+  --accent-coral: #FF4B4B;
+  --accent-cyan: #18FFB5; /* Anime.js uses bright mint/cyan accents too */
+  
+  --text-main: #FFFFFF;
+  --text-muted: #888888;
+  
+  --font-sans: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'Fira Code', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Base Styles & Typography */
+h1, h2, h3, h4 {
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+/* Structural Layout */
+.app-container, .website-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  background: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
+}
+
+.nav-brand {
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: -1px;
+}
+
+.nav-brand span {
+  color: var(--accent-coral);
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--text-main);
+}
+
+.nav-cta {
+  background: var(--text-main);
+  color: var(--bg-color);
+  border: none;
+  padding: 12px 24px;
+  font-weight: 900;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-cta:hover {
+  background: var(--accent-coral);
+  color: #fff;
+}
+
+/* Anime.js Background Grid */
+.anime-background {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+  z-index: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  padding: 5vh 5vw;
+}
+
+.grid-element {
+  width: 40px;
+  height: 40px;
+  margin: 2px;
+  background-color: var(--border-color);
+  transform-origin: center center;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  pointer-events: none; /* Let clicks pass through to background if interactive */
+}
+
+.hero-title {
+  font-size: 8vw;
+  color: var(--text-main);
+  mix-blend-mode: difference;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent-coral);
+  margin-top: 20px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.hero-buttons {
+  margin-top: 60px;
+  pointer-events: auto;
+}
+
+.btn-brutal {
+  background: transparent;
+  color: var(--text-main);
+  border: 2px solid var(--text-main);
+  padding: 20px 48px;
+  font-weight: 900;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-brutal:hover {
+  background: var(--text-main);
+  color: var(--bg-color);
+}
+
+.btn-brutal.primary {
+  background: var(--accent-coral);
+  border-color: var(--accent-coral);
+  color: #fff;
+}
+
+.btn-brutal.primary:hover {
+  background: transparent;
+  color: var(--accent-coral);
+}
+
+/* Marquee / Stats Bar */
+.stats-bar {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.stat-block {
+  flex: 1;
+  padding: 40px;
+  border-right: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.stat-block:last-child {
+  border-right: none;
+}
+
+.stat-value {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--accent-coral);
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Content Sections */
+.section {
+  padding: 120px 40px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: 80px;
+}
+
+.section-title {
+  font-size: 4rem;
+}
+
+.section-title span {
+  color: var(--accent-coral);
+}
+
+/* Feature Grid (Brutalist) */
+.brutal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--border-color);
+}
+
+.brutal-card {
+  padding: 60px 40px;
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-color);
+  transition: background 0.3s;
+}
+
+.brutal-card:hover {
+  background: var(--bg-secondary);
+}
+
+.brutal-card:nth-child(3n) {
+  border-right: none;
+}
+
+.brutal-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: var(--accent-coral);
+}
+
+.brutal-card p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+/* Code / Math Section */
+.code-section {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 120px 40px;
+}
+
+.code-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  border: 1px solid var(--border-light);
+  background: var(--bg-color);
+}
+
+.code-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-light);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+}
+
+.code-body {
+  padding: 40px;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--accent-cyan);
+  line-height: 2;
+  overflow-x: auto;
+}
+
+/* Footer */
+.footer {
+  padding: 80px 40px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-col h4 {
+  font-size: 1rem;
+  color: var(--accent-coral);
+  margin-bottom: 24px;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col li {
+  margin-bottom: 16px;
+}
+
+.footer-col a {
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.footer-col a:hover {
+  color: var(--text-main);
+}
+
+/* =========================================
+   DASHBOARD STYLES (BRUTALIST)
+   ========================================= */
+.app-container {
+  flex-direction: row;
+}
+
+.sidebar {
+  width: 380px;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  padding: 40px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-header h1 {
+  font-size: 2rem;
+  color: var(--accent-coral);
+}
+
+.sidebar-content {
+  padding: 40px;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+.form-label {
+  display: block;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  color: var(--text-muted);
+}
+
+.form-input, .form-select {
+  width: 100%;
+  padding: 16px;
+  background: var(--bg-color);
+  border: 1px solid var(--border-light);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  border-radius: 0;
+  outline: none;
+}
+
+.form-input:focus, .form-select:focus {
+  border-color: var(--accent-coral);
+}
+
+.btn-dashboard {
+  width: 100%;
+  padding: 20px;
+  background: var(--accent-coral);
+  color: #fff;
+  border: none;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  transition: opacity 0.2s;
+}
+
+.btn-dashboard:hover {
+  opacity: 0.8;
+}
+
+.btn-dashboard:disabled {
+  background: var(--border-color);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 40px;
+  background: var(--bg-color);
+  overflow-y: auto;
+}
+
+.header-dash {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 20px;
+}
+
+.header-dash h2 {
+  font-size: 2.5rem;
+}
+
+.status-badge {
+  padding: 8px 16px;
+  border: 1px solid var(--text-main);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.status-badge.training {
+  border-color: var(--accent-coral);
+  color: var(--accent-coral);
+}
+
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border-color);
+  margin-bottom: 40px;
+}
+
+.metric-box {
+  padding: 40px;
+  border-right: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.metric-box:last-child {
+  border-right: none;
+}
+
+.metric-box .label {
+  font-weight: 900;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.metric-box .value {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--text-main);
+}
+
+.charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.chart-panel {
+  border: 1px solid var(--border-color);
+  background: var(--bg-color);
+}
+
+.chart-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chart-body {
+  padding: 20px;
+  height: 300px;
+}
+
+.progress-line {
+  height: 2px;
+  background: var(--border-color);
+  margin-top: 20px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent-coral);
+  transition: width 0.2s;
+}
+
+/* Recharts Overrides for Brutalist Theme */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: var(--border-light);
+  stroke-dasharray: 0;
+}
+
+.recharts-tooltip-wrapper {
+  outline: none;
+}
